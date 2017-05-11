@@ -72,6 +72,6 @@ void MainWindow::slotEnter()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if (event->key() == Qt::Key_Enter)
+    if (event->key() == Qt::Key_Enter || Qt::Key_Return)
         slotEnter();
 }

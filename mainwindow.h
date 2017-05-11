@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QApplication>
 #include <QClipboard>
+#include <QKeyEvent>
+#include <QtEvents>
 
 #include "stringcalculator.h"
 
@@ -59,6 +61,7 @@ private:
 
     void setLineEdit(const char * str);
     void resetLineEdit();
+    void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // MAINWINDOW_H

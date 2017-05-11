@@ -51,6 +51,13 @@ void MainWindow::slotEnter()
             operStr[i] = '.';
     }
 
+    // just because it's fun...
+    if (operStr == "42") {
+        ui->lineEdit->setText("The answer to life the universe and everything.");
+        return;
+    }
+
+
     try
     {
         operStr = std::to_string(StringCalculator::calculator(operStr));
@@ -61,4 +68,10 @@ void MainWindow::slotEnter()
         ui->lineEdit->setText("Invalid expression!");
     }
 
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Enter)
+        slotEnter();
 }

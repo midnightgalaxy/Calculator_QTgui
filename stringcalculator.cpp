@@ -18,6 +18,10 @@
 // this method evaluates the expression and make sure it's okay before it deligates the work to the calc() method
 double StringCalculator::calculator(const std::string & input)  // will throw exception if bad expression
 {
+    // if no input return 0
+    if (input.size() == 0)
+        return 0;
+
     // check for no valid expression and throw runtime_error if so
     for (int i = 0; i < input.size(); i++)
     {
@@ -133,10 +137,7 @@ double StringCalculator::calc(const std::string & input)
                 double op2 = std::stod(input.substr(vecPosSub.at(0)+1, input.size()));
                 return op1-op2;
             }
-
         }
-
-
     }
 
     // important code because it's important to start from the back in the expression and work forward if first is minus
@@ -145,7 +146,6 @@ double StringCalculator::calc(const std::string & input)
         if (vecPosDiv.back() > vecPosMult.back())
             startMult = false;
     }
-
 
     else if (vecPosMult.size() != 0 && startMult) {
         std::string input2 = input;
@@ -193,8 +193,6 @@ double StringCalculator::calc(const std::string & input)
             return calc(input2);
         }
 
-
-
     } else if (vecPosDiv.size() != 0) {
         std::string input2 = input;
 
@@ -238,6 +236,4 @@ double StringCalculator::calc(const std::string & input)
         input2.insert(0, std::to_string(newExpr));
         return calc(input2);
     }
-
-
 }

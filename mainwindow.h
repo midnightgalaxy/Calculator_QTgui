@@ -5,6 +5,8 @@
 #include <QApplication>
 #include <QClipboard>
 
+#include "stringcalculator.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -19,10 +21,16 @@ public:
 
 public slots:
     void slot1() { QApplication::aboutQt(); }
+
     void slot2(QString);        // setting operStr from inputfield
 
-    void slotC();
-    void slotEnter() {}
+    void slotC() { resetLineEdit(); }
+
+    void slotEnter()
+    {
+        operStr = std::to_string(StringCalculator::calculator(operStr));
+        setLineEdit(operStr.c_str());
+    }
 
     void slotNum1() { setLineEdit("1"); }
     void slotNum2() { setLineEdit("2"); }
@@ -35,6 +43,9 @@ public slots:
     void slotNum9() { setLineEdit("9"); }
     void slotNum0() { setLineEdit("0"); }
 
+    void slotE() { setLineEdit("2.71828182846"); }
+    void slotPI() { setLineEdit("3.14159265359"); }
+
     void slotDot() { setLineEdit("."); }
 
     void slotPlus() { setLineEdit("+"); }
@@ -42,9 +53,10 @@ public slots:
     void slotMult() { setLineEdit("*"); }
     void slotDiv() { setLineEdit("/"); }
 
+    void slotParaRight() { setLineEdit(")"); }
+    void slotParaLeft() { setLineEdit("("); }
+
     void slotCopy();
-
-
 
 private:
     Ui::MainWindow *ui;

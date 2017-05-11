@@ -31,12 +31,6 @@ void MainWindow::resetLineEdit()
     ui->lineEdit->setText("");
 }
 
-void MainWindow::slotC()
-{
-    operStr = "";
-    ui->lineEdit->setText("");
-}
-
 void MainWindow::slotCopy()
 {
     QApplication::clipboard()->setText(operStr.c_str());

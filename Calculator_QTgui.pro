@@ -24,8 +24,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    stringcalculator.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    tinyexpr.h \
+    stringcalculator.h
 
 FORMS    += mainwindow.ui

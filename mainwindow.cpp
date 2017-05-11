@@ -1,3 +1,9 @@
+/**
+*
+* ENTER key doesn't work either...
+*
+*/
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -34,4 +40,25 @@ void MainWindow::resetLineEdit()
 void MainWindow::slotCopy()
 {
     QApplication::clipboard()->setText(operStr.c_str());
+}
+
+void MainWindow::slotEnter()
+{
+    // change all ',' to '.'
+    for (int i = 0; i < operStr.size(); i++)
+    {
+        if (operStr[i] == ',')
+            operStr[i] = '.';
+    }
+
+    try
+    {
+        operStr = std::to_string(StringCalculator::calculator(operStr));
+        ui->lineEdit->setText(operStr.c_str());
+    }
+    catch(std::runtime_error)
+    {
+        ui->lineEdit->setText("Invalid expression!");
+    }
+
 }

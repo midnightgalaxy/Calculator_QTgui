@@ -26,12 +26,6 @@ public slots:
 
     void slotC() { resetLineEdit(); }
 
-    void slotEnter()
-    {
-        operStr = std::to_string(StringCalculator::calculator(operStr));
-        setLineEdit(operStr.c_str());
-    }
-
     void slotNum1() { setLineEdit("1"); }
     void slotNum2() { setLineEdit("2"); }
     void slotNum3() { setLineEdit("3"); }
@@ -56,6 +50,7 @@ public slots:
     void slotParaRight() { setLineEdit(")"); }
     void slotParaLeft() { setLineEdit("("); }
 
+    void slotEnter();
     void slotCopy();
 
 private:

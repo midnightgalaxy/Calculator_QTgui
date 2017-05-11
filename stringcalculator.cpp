@@ -2,6 +2,14 @@
 * StringCalculator v1.0
 * Copyright (c) 2017, MidnightGalaxy
 * https://github.com/midnightgalaxy
+*
+*
+* There are bugs in both handling decimals, when there are mult/div op in middle of expression, certainly there are more bugs...
+* No support for paranthesis atm either.
+* I leave this for so long, do whatever you can to save the code...
+* I mostly did this for fun and the learning experince, I have somehow archived that still somehow. Though, DON'T USE THIS CALCULATOR ;)
+*
+*
 */
 
 
@@ -20,6 +28,19 @@ double StringCalculator::calculator(const std::string & input)  // will throw ex
         else
             throw std::runtime_error("no valid expression! :( -> some unvalid character");
     }
+
+    // check for operators, otherwise just return the number
+    int operators = 0;
+    for (int i = 0; i < input.size(); i++)
+    {
+        if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/')
+            operators++;
+    }
+    if (operators == 0)
+        return std::stod(input);
+    // if first is minus and no other operators then just return
+    if (operators == 1 && input[0] == '-')
+        return std::stod(input);
 
     // check parathesis valid expression
     int paraCount1 = 0;
